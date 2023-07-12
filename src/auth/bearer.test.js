@@ -35,7 +35,7 @@ describe('Auth Middleware', () => {
     it('fails a login for a user (admin) with an incorrect token', () => {
 
       req.headers = {
-        authorization: 'Bearer thisisabadtoken',
+        authorization: 'Bearer this is a bad token',
       };
 
       return bearer(req, res, next)

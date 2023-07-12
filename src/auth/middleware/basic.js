@@ -15,13 +15,11 @@ module.exports = async (req, res, next) => {
         const decodedData = base64.decode(theAutodecodedOnly)
 
         const [userName, password] = decodedData.split(':');
-        // console.log(User)
       await User.basicAuthChecker(userName,password).then(data => {
         console.log(data)
         req.user = data 
         next()
         }).catch (err => {
-            // next ({ massege: err })
             next ( err )
         })
 

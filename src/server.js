@@ -1,10 +1,7 @@
 'use strict'
 
-// require('dotenv').config()
-
 const express = require('express');
 const cors = require('cors');
-// const PORT = process.env.PORT
 const app = express();
 app.use(cors());
 app.use(express.json())
@@ -19,7 +16,7 @@ const userRouter = require('./auth/router')
 app.get('/', (req, res) => {
     res.status(200).json({
         code: 200,
-        message: 'WELCOME!!!!'
+        message: 'Welcome To Home Page'
     })
 })
 
@@ -32,7 +29,7 @@ app.use('*', PageNotFound)
 
 
 function start(port) {
-    app.listen(port, () => console.log(`Up & running on port: ${port}`))
+    app.listen(port, () => console.log(`Up & Running on port: ${port}`))
 }
 
 

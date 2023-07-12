@@ -4,18 +4,6 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const secretKey = process.env.SECRET
 
-// function users (sequelize, DataTypes){
-//   const userModel =   sequelize.define('user', {
-//         userName: {
-//             type: DataTypes.STRING,
-//             allowNull: false,
-//             unique: true
-//         },
-//         password: {
-//             type: DataTypes.STRING,
-//             allowNull: false
-//         }   
-// }
 
 const users = (sequelize, DataTypes) =>  { const userModel = sequelize.define('user', {
     userName: {
@@ -49,7 +37,7 @@ userModel.basicAuthChecker = async function(userName,password ){
 
 userModel.bearerAuthChecker = async function(token){
     const parsedToken = jwt.verify(token, secretKey)   // parse the token into a data that we can read (paylode part, the user data)
-    // console.log(parsedToken) 
+     
     const user = await userModel.findOne({ where: {userName: parsedToken.userName } });
     if(user.userName){
       return user

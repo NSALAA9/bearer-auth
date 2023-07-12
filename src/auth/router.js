@@ -29,7 +29,7 @@ function userSignIn(req, res) {
 
 function newPage(req, res) {
     res.status(200).json({
-        massege: "Welcom to secretstuff page"
+        massege: "Welcom to secrets page"
     })
 }
 
